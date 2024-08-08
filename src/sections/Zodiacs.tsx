@@ -1,10 +1,15 @@
 "use client";
 
 // React
-import React from "react";
+import React, { useRef } from "react";
 
 // Framer Animation
-import { AnimatePresence, motion } from "framer-motion";
+import {
+  AnimatePresence,
+  motion,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 
 // Aceternity UI
 import { CanvasRevealEffect } from "@/components/ui/canvas-reveal-effect";
@@ -14,10 +19,27 @@ import starsBg from "@/assets/stars.png";
 import gridLines from "@/assets/grid-lines.png";
 
 export const Zodiacs = () => {
+  const sectionRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+  const backgroundPositionY = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [-300, 300]
+  );
+
   return (
-    <section
+    <motion.section
+      ref={sectionRef}
+      animate={{ backgroundPositionX: starsBg.width }}
+      transition={{ repeat: Infinity, ease: "linear", duration: 120 }}
       className="h-screen rounded-xl overflow-hidden relative"
-      style={{ backgroundImage: `url(${starsBg.src})` }}
+      style={{
+        backgroundImage: `url(${starsBg.src})`,
+        backgroundPositionY,
+      }}
     >
       {/* {Background Image} */}
       <div
@@ -25,7 +47,7 @@ export const Zodiacs = () => {
         style={{ backgroundImage: `url(${gridLines.src})` }}
       ></div>
       {/* {Title} */}
-      <h1 className="text-6xl md:text-8xl md:leading-none font-semibold tracking-tighter bg-white bg-title-radial-gradient text-transparent bg-clip-text text-center pb-8">
+      <h1 className="text-4xl md:text-6xl md:leading-none font-semibold tracking-tighter bg-white bg-title-radial-gradient text-transparent bg-clip-text text-center pb-8">
         Zodiac Signs
       </h1>
       <div className="flex items-center justify-center h-[80%]">
@@ -33,23 +55,17 @@ export const Zodiacs = () => {
         <motion.div
           animate={{ rotate: "-1turn" }}
           transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-          className="absolute h-[744px] w-[744px] rounded-full border border-white/50"
+          className="absolute h-[544px] w-[544px] md:h-[744px] md:w-[744px] rounded-full border border-white/50"
         >
           {/* {Third Element} */}
           <div
-            className="absolute w-[300px] h-[300px] rounded-full flex items-center justify-center"
+            className="md-third-ring-transform md:lg-third-ring-transform absolute w-[300px] h-[300px] rounded-full flex items-center justify-center trans"
             style={{
               top: "50%",
               left: "50%",
-              transform:
-                "translate(-50%, -50%) rotate(120deg) translate(372px) rotate(-120deg)",
             }}
           >
-            <Card
-              title="İnovasyon Aslanı"
-              description="Sürekli yenilik ve yaratıcılık arayan girişimcilerdir. İnovatif yöntemleri işinize adapte ederken, müşteri ihtiyaçlarını karşılayıp karşılamadığını ve işinizi kolaylaştırıp kolaylaştırmadığını sorgulamalısınız. Düşün, tasarla, yönet: İnovasyonun işinize katkısını ve kimin için yararlı olduğunu değerlendirin."
-              icon={<AceternityIcon />}
-            >
+            <Card title="İnovasyon Aslanı" icon={<AceternityIcon />}>
               <CanvasRevealEffect
                 animationSpeed={3}
                 containerClassName="bg-sky-600"
@@ -59,19 +75,13 @@ export const Zodiacs = () => {
           </div>
           {/* {Sixth Element} */}
           <div
-            className="absolute w-[300px] h-[300px] rounded-full flex items-center justify-center"
+            className="md-sixth-ring-transform md:lg-sixth-ring-transform absolute w-[300px] h-[300px] rounded-full flex items-center justify-center"
             style={{
               top: "50%",
               left: "50%",
-              transform:
-                "translate(-50%, -50%) rotate(300deg) translate(372px) rotate(-300deg)",
             }}
           >
-            <Card
-              title="Sosyal Cevher"
-              description="İletişim Cevheri, yeni insanlarla tanışmayı ve iletişim kurmayı seven girişimcileri ifade eder. Her gün yeni insanlarla tanışıp onlara değer katmak, başarılı bir bölge uzmanı olmalarına yardımcı olur. İyi bir pazarlama planı hazırlayıp uygulayarak işlerini geniş bir kitleye tanıtmaları önemlidir."
-              icon={<AceternityIcon />}
-            >
+            <Card title="Sosyal Cevher" icon={<AceternityIcon />}>
               <CanvasRevealEffect
                 animationSpeed={3}
                 containerClassName="bg-emerald-900"
@@ -83,23 +93,17 @@ export const Zodiacs = () => {
         <motion.div
           animate={{ rotate: "-1turn" }}
           transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-          className="absolute h-[544px] w-[544px] rounded-full border border-white/50"
+          className="absolute h-[344px] w-[344px] md:h-[544px] md:w-[544px] rounded-full border border-white/50"
         >
           {/* {Second Element} */}
           <div
-            className="absolute w-[300px] h-[300px] rounded-full flex items-center justify-center"
+            className="md-second-ring-transform md:lg-second-ring-transform absolute w-[300px] h-[300px] rounded-full flex items-center justify-center"
             style={{
               top: "50%",
               left: "50%",
-              transform:
-                "translate(-50%, -50%) rotate(60deg) translate(272px) rotate(-60deg)",
             }}
           >
-            <Card
-              title="Roketatar"
-              description="Risk almayı seven ve fırsatları cesurca değerlendiren girişimcileri ifade eder. RE/MAX’te ödüllerde sınır yok, ödül alırken ne giyeceğini düşün. Riskleri yönetme ve krizleri fırsata çevirme yetenekleriyle tanınan bu girişimciler, kendilerini sürekli geliştirerek başarıya ulaşır."
-              icon={<AceternityIcon />}
-            >
+            <Card title="Roketatar" icon={<AceternityIcon />}>
               <CanvasRevealEffect
                 animationSpeed={3}
                 containerClassName="bg-black"
@@ -113,19 +117,13 @@ export const Zodiacs = () => {
           </div>
           {/* {Fifth Element} */}
           <div
-            className="absolute w-[300px] h-[300px] rounded-full flex items-center justify-center"
+            className="md-fifth-ring-transform md:lg-fifth-ring-transform absolute w-[300px] h-[300px] rounded-full flex items-center justify-center"
             style={{
               top: "50%",
               left: "50%",
-              transform:
-                "translate(-50%, -50%) rotate(240deg) translate(272px) rotate(-240deg)",
             }}
           >
-            <Card
-              title="Kararlı Kaplan"
-              description="İstikrarlı ve kararlı girişimcileri temsil eder. Hedeflerine ulaşmak için sabırlı ve kararlıdırlar, engellerle karşılaştıklarında pes etmezler. Bir portföy veya bölgeyi hedeflediklerinde, kararlılıkla devam ederken diğer işlerini aksatmamak önemlidir."
-              icon={<AceternityIcon />}
-            >
+            <Card title="Kararlı Kaplan" icon={<AceternityIcon />}>
               <CanvasRevealEffect
                 animationSpeed={3}
                 containerClassName="bg-black"
@@ -142,23 +140,17 @@ export const Zodiacs = () => {
         <motion.div
           animate={{ rotate: "1turn" }}
           transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-          className="absolute border border-white/50 w-[344px] h-[344px] rounded-full shadow-lg"
+          className="absolute border border-white/50 h-[144px] w-[144px] md:w-[344px] md:h-[344px] rounded-full shadow-lg"
         >
           {/* {First Element} */}
           <div
-            className="absolute w-[300px] h-[300px] rounded-full flex items-center justify-center"
+            className="md-first-ring-transform md:lg-first-ring-transform absolute w-[300px] h-[300px] rounded-full flex items-center justify-center"
             style={{
               top: "50%",
               left: "50%",
-              transform:
-                "translate(-50%, -50%) rotate(0deg) translate(172px) rotate(0deg)",
             }}
           >
-            <Card
-              title="Vizyoner Yıldız"
-              description="Büyük hayalleri ve ileriye dönük vizyonları olan girişimcileri temsil eder. Yenilikçi düşünürler ve cesur hedefler belirlerler; iş planına sadık kalarak bu hedeflere ulaşmak için çalışırlar. Planınıza bağlı kalmak, büyük hayallerinizi gerçekleştirmek için kritik öneme sahiptir."
-              icon={<AceternityIcon />}
-            >
+            <Card title="Vizyoner Yıldız" icon={<AceternityIcon />}>
               <CanvasRevealEffect
                 animationSpeed={5.1}
                 containerClassName="bg-emerald-900"
@@ -167,19 +159,13 @@ export const Zodiacs = () => {
           </div>
           {/* {Forth Element} */}
           <div
-            className="absolute w-[300px] h-[300px] rounded-full flex items-center justify-center"
+            className="md-forth-ring-transform md:lg-forth-ring-transform absolute w-[300px] h-[300px] rounded-full flex items-center justify-center"
             style={{
               top: "50%",
               left: "50%",
-              transform:
-                "translate(-50%, -50%) rotate(180deg) translate(172px) rotate(-180deg)",
             }}
           >
-            <Card
-              title="Motivasyon İncisi"
-              description="İçsel motivasyonu yüksek ve enerjik girişimcileri temsil eder. Hedeflerine ulaşmak için tutkulu ve kararlıdırlar, empati yetenekleri sayesinde başkalarına ilham verirler. Ancak, empatiyi sempatiyle karıştırmamak ve itirazları yönetirken dikkatli olmak önemlidir."
-              icon={<AceternityIcon />}
-            >
+            <Card title="Motivasyon İncisi" icon={<AceternityIcon />}>
               <CanvasRevealEffect
                 animationSpeed={3}
                 containerClassName="bg-sky-600"
@@ -189,18 +175,16 @@ export const Zodiacs = () => {
           </div>
         </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
 const Card = ({
   title,
-  description,
   icon,
   children,
 }: {
   title: string;
-  description: string;
   icon: React.ReactNode;
   children?: React.ReactNode;
 }) => {
@@ -234,9 +218,6 @@ const Card = ({
         </div>
         <h2 className="cursor-default text-white lg:text-3xl text-center opacity-0 group-hover/canvas-card:opacity-100 relative z-10 mt-4  font-bold group-hover/canvas-card:text-white group-hover/canvas-card:-translate-y-2 transition duration-200">
           {title}
-        </h2>
-        <h2 className="hidden text-sm text-center text-white opacity-0 group-hover/canvas-card:opacity-100 relative z-10 mt-4  font-bold group-hover/canvas-card:text-white group-hover/canvas-card:-translate-y-2 transition duration-200">
-          {description}
         </h2>
       </div>
     </div>

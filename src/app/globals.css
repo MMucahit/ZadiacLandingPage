@@ -1,3 +1,102 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .lg-third-ring-transform {
+    @apply absolute w-[300px] h-[300px] rounded-full flex items-center justify-center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(120deg) translate(372px)
+      rotate(-120deg);
+  }
+
+  .md-third-ring-transform {
+    @apply absolute w-[300px] h-[300px] rounded-full flex items-center justify-center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(120deg) translate(272px)
+      rotate(-120deg);
+  }
+  
+
+  .lg-sixth-ring-transform {
+    @apply absolute w-[300px] h-[300px] rounded-full flex items-center justify-center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(300deg) translate(372px)
+      rotate(-300deg);
+  }
+
+  .md-sixth-ring-transform {
+    @apply absolute w-[300px] h-[300px] rounded-full flex items-center justify-center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(300deg) translate(272px)
+      rotate(-300deg);
+  }
+
+  .lg-second-ring-transform {
+    @apply absolute w-[300px] h-[300px] rounded-full flex items-center justify-center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(60deg) translate(272px)
+      rotate(-60deg);
+  }
+
+  .md-second-ring-transform {
+    @apply absolute w-[300px] h-[300px] rounded-full flex items-center justify-center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(60deg) translate(172px)
+      rotate(-60deg);
+  }
+
+  .lg-fifth-ring-transform {
+    @apply absolute w-[300px] h-[300px] rounded-full flex items-center justify-center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(240deg) translate(272px)
+      rotate(-240deg);
+  }
+
+  .md-fifth-ring-transform {
+    @apply absolute w-[300px] h-[300px] rounded-full flex items-center justify-center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(240deg) translate(172px)
+      rotate(-240deg);
+  }
+
+  .lg-first-ring-transform {
+    @apply absolute w-[300px] h-[300px] rounded-full flex items-center justify-center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(0deg) translate(172px)
+      rotate(-0deg);
+  }
+
+  .md-first-ring-transform {
+    @apply absolute w-[300px] h-[300px] rounded-full flex items-center justify-center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(0deg) translate(72px)
+      rotate(-0deg);
+  }
+
+  .lg-forth-ring-transform {
+    @apply absolute w-[300px] h-[300px] rounded-full flex items-center justify-center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(180deg) translate(172px)
+      rotate(-180deg);
+  }
+
+  .md-forth-ring-transform {
+    @apply absolute w-[300px] h-[300px] rounded-full flex items-center justify-center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(180deg) translate(72px)
+      rotate(-180deg);
+  }
+}

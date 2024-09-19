@@ -59,7 +59,7 @@ export const Zodiacs = () => {
         >
           {/* {Third Element} */}
           <div
-            className="md-third-ring-transform md:lg-third-ring-transform absolute w-[300px] h-[300px] rounded-full flex items-center justify-center trans"
+            className="md-third-ring-transform md:lg-third-ring-transform absolute w-[300px] h-[300px] rounded-full flex items-center justify-center translate"
             style={{
               top: "50%",
               left: "50%",

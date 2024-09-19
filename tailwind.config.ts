@@ -30,6 +30,8 @@ const config: Config = {
       lg: "1200px",
     },
     extend: {
+      animation: {scroll: "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",},
+      keyframes: {scroll: { to: {transform: "translate(calc(-50% - 0.5rem))",}}},
       backgroundImage: {
         "title-radial-gradient":
           "radial-gradient(100% 100% at top left, white, white, rgba(74, 32, 138, 0.5))",
